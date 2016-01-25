@@ -1,0 +1,74 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    private static void printArray(char[] ar) {
+      for(int n=0;n<ar.length;n++){
+         System.out.print(ar[n]);
+      }
+        System.out.println("");
+   }
+    
+    private static void sort(char[] ar,int pos,int val) 
+    {
+       
+        Arrays.sort(ar,pos+1,ar.length);
+        int swapindex=0;
+        
+        for(int i=pos+1;i<ar.length;i++)
+        {
+            if(ar[i]>val)
+            {swapindex=i;
+            break;
+            }
+        }
+        
+       
+        char temp=ar[swapindex];
+        ar[swapindex]=ar[pos];
+        ar[pos]=temp;
+         printArray(ar);
+    }
+
+    public static void main(String[] args) {
+     try
+     {InputStreamReader in=new InputStreamReader(System.in);
+     BufferedReader in1=new BufferedReader(in); 
+     int t=Integer.parseInt(in1.readLine());
+     for(int i=0;i<t;i++)
+     {
+         int flag=0;
+         String ch=in1.readLine();
+         char[] s = ch.toCharArray();
+         if(s.length==1)
+         System.out.println("no answer");
+         else
+         {  
+            for(int j=s.length-2;j>=0;j--)
+            { int k=j+1;
+                
+                    
+                 if(s[j]<s[k])
+                 {
+                    sort(s,j,s[j]);
+                    flag=1;
+                    break;
+                    
+                 }
+                 
+                }
+               
+               
+            
+         
+         if(flag==0)
+             System.out.println("no answer");
+      
+     }
+     }
+     }catch(IOException e){}
+    }
+}

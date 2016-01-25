@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+   
+    public static void main(String[] args) {
+     try
+     {InputStreamReader in=new InputStreamReader(System.in);
+     BufferedReader in1=new BufferedReader(in); 
+     int t=Integer.parseInt(in1.readLine());
+     
+         String[] ch=in1.readLine().split(" ");
+         int[] ar=new int[100];
+         for(int i=0;i<100;i++)
+         {
+             ar[i]=0;
+         }
+         for(int i=0;i<t;i++)
+         {
+          ar[Integer.parseInt(ch[i])]++;   
+         }
+         for(int i=0;i<100;i++)
+         {
+             System.out.print(ar[i]+" ");
+         }
+     }catch(IOException e){}
+    }
+}

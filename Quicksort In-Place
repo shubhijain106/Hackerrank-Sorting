@@ -1,0 +1,75 @@
+import java.util.*;
+public class Solution {
+  public static void quickSort(int[] a, int p, int r)
+    {
+        if(p<r)
+        {
+            int q=partition(a,p,r);
+         // System.out.println("q"+q);
+          printArray(a);
+            quickSort(a,p,q-1); 
+            quickSort(a,q+1,r);
+            
+        }
+    }
+
+    private static int partition(int[] a, int p, int r) {
+
+        int x = a[r];
+        int i = p;
+        int j=p;
+
+        while (true) {
+        
+            
+            if(i<r && a[i]<x)
+            {while ( i< r && a[i] < x)
+            {swap(a,i,j);//System.out.println("a[i]"+a[i]);
+              i++;
+              j++;
+              }}
+            else
+            {
+            while (j<r && a[j] > x)
+            { 
+            j++;}
+
+            if (i<j && a[j]!=x && a[i]!=x)
+            {swap(a, i, j);i++;j++;}
+            else
+            {//System.out.println("a[j]"+a[i]);
+             swap(a,r,i);
+            //printArray(a);
+            return i;
+            }
+          // printArray(a);
+        }
+    }}
+
+    private static void swap(int[] a, int i, int j) {
+        // TODO Auto-generated method stub
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+  
+ 
+ static void printArray(int[] ar) {
+         for(int n: ar){
+            System.out.print(n+" ");
+         }
+           System.out.println("");
+      }
+       
+      public static void main(String[] args) {
+           Scanner in = new Scanner(System.in);
+           int n = in.nextInt();
+           int[] ar = new int[n];
+           for(int i=0;i<n;i++){
+              ar[i]=in.nextInt(); 
+           }
+           quickSort(ar,0,ar.length-1);
+       }    
+   }
+
+
